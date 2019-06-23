@@ -1,19 +1,22 @@
-PROJECT = awesomesauce
+PROJECT = blink
 BUILD_DIR = bin
 
-SHARED_DIR = ../my-common-code
-CFILES = my-project.c
-CFILES += api.c
-AFILES += api-asm.S
+# SHARED_DIR = ../my-common-code
+# AFILES += api-asm.S
+# CFILES += api.c
+CFILES = main.c
+
+
 
 # TODO - you will need to edit these two lines!
-DEVICE=stm32f407vgt6
-OOCD_FILE = board/stm32f4discovery.cfg
+DEVICE = lm4f120xl
+LDSCRIPT = ../platform/core/ek-lm4f120xl.ld
+# OOCD_FILE = board/stm32f4discovery.cfg
 
 # You shouldn't have to edit anything below here.
 VPATH += $(SHARED_DIR)
 INCLUDES += $(patsubst %,-I%, . $(SHARED_DIR))
-OPENCM3_DIR=../libopencm3
+OPENCM3_DIR=../platform/core/libopencm3
 
 include $(OPENCM3_DIR)/mk/genlink-config.mk
 include ../rules.mk
